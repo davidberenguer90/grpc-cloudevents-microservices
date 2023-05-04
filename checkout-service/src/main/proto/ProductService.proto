@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package dev.dberenguer.grpccloudevents.grpc;
+import "google/protobuf/empty.proto";
+
+message ProductDtoGrpc {
+  string code = 1;
+  string name = 2;
+  double price = 3;
+}
+
+service ProductService {
+  rpc findAllProducts(google.protobuf.Empty) returns (stream ProductDtoGrpc);
+}
